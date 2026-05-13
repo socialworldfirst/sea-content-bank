@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>SEA Brand Channel — Content Bank</title>
+<title>SEA Content Bank</title>
 <style>
 :root {
   --bg: #ffffff;
@@ -14,7 +14,6 @@
   --line: #d2d2d7;
   --line-soft: #e8e8ed;
   --tint: #f5f5f7;
-  --accent: #1d1d1f;
   --p1: #1a6dcc;
   --p2: #946100;
   --p3: #b03060;
@@ -32,28 +31,31 @@ html, body { background: var(--bg); color: var(--ink);
 h1 { font-size: 32px; line-height: 1.18; letter-spacing: -0.02em; font-weight: 600;
   color: var(--ink); margin-bottom: 14px; }
 .lede { font-size: 17px; color: var(--ink-soft); max-width: 640px; line-height: 1.55; }
-.meta { display: flex; gap: 18px; flex-wrap: wrap;
-  font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px;
-  color: var(--ink-mute); margin-top: 24px; padding-top: 18px;
-  border-top: 1px solid var(--line); }
-.meta span strong { color: var(--ink); font-weight: 600; }
 
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  margin: 40px 0; }
-.stat { padding: 22px 18px; border-right: 1px solid var(--line-soft); }
-.stat:last-child { border-right: none; }
-.stat-n { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-.stat-l { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10px;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-top: 4px; }
+.flow { display: flex; gap: 0; margin: 40px 0 0;
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.flow-step { flex: 1; padding: 16px 18px; border-right: 1px solid var(--line-soft);
+  position: relative; }
+.flow-step:last-child { border-right: none; }
+.flow-step.active { background: var(--tint); }
+.flow-step .step-l { font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-mute); margin-bottom: 4px; }
+.flow-step.active .step-l { color: var(--ink); font-weight: 600; }
+.flow-step .step-t { font-size: 13px; color: var(--ink-soft); }
+.flow-step .step-c { font-size: 18px; font-weight: 600; color: var(--ink); margin-top: 2px; }
 
 section { margin: 52px 0; }
-h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px; color: var(--ink); }
-.section-sub { font-size: 13px; color: var(--ink-mute); margin-bottom: 26px;
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
-  letter-spacing: 0.04em; text-transform: uppercase; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 20px; border-bottom: 1px solid var(--ink); padding-bottom: 6px; }
+h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.section-count { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px;
+  color: var(--ink-mute); letter-spacing: 0.06em; text-transform: uppercase; }
 
-.piece { padding: 22px 0; border-bottom: 1px solid var(--line-soft); }
+.section-intro { font-size: 14px; color: var(--ink-mute); margin-bottom: 22px;
+  font-style: italic; }
+
+.piece { padding: 20px 0; border-bottom: 1px solid var(--line-soft); }
 .piece:last-child { border-bottom: none; }
 .piece-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
 .piece-id { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px;
@@ -71,74 +73,106 @@ h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 
 .tag.bi { color: var(--ink-mute); }
 
 .piece-body { padding-left: 68px; font-size: 14px; color: var(--ink-soft); }
-.piece-mech { color: var(--ink-mute); margin-top: 6px; font-style: italic; }
+.piece-mech { color: var(--ink-mute); margin-top: 6px; }
 .piece-hook { margin-top: 4px; color: var(--ink-soft); }
 .piece-hook::before { content: 'Hook  '; font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-right: 4px; }
+.piece-note { margin-top: 8px; font-size: 12px; color: var(--ink-mute); }
+.piece-note::before { content: 'Note  '; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-right: 4px; }
 
-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
-th { text-align: left; padding: 10px 8px; font-weight: 600; color: var(--ink);
-  border-bottom: 1px solid var(--ink); font-size: 11px; letter-spacing: 0.06em;
-  text-transform: uppercase; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
-td { padding: 10px 8px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); vertical-align: top; }
+.session-card { display: block; padding: 18px 20px; margin-bottom: 12px;
+  border: 1px solid var(--line); border-radius: 4px; text-decoration: none;
+  color: var(--ink); transition: border-color 0.15s; }
+.session-card:hover { border-color: var(--ink); }
+.session-meta { display: flex; gap: 14px; align-items: baseline; }
+.session-date { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px;
+  color: var(--ink-mute); letter-spacing: 0.04em; }
+.session-title { font-size: 15px; font-weight: 600; flex: 1; }
+.session-state { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
+.session-sum { margin-top: 6px; font-size: 13px; color: var(--ink-soft); }
 
-.notes { background: var(--tint); padding: 18px 22px; margin-top: 14px;
-  border-left: 2px solid var(--ink); font-size: 13px; color: var(--ink-soft); }
-.notes h3 { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 8px; color: var(--ink); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
-.notes ul { padding-left: 18px; margin-top: 4px; }
-.notes li { margin-bottom: 4px; }
+.archived-row { display: flex; gap: 14px; align-items: baseline; padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft); }
+.archived-id { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px;
+  color: var(--ink-mute); min-width: 100px; }
+.archived-t { font-size: 14px; color: var(--ink-soft); flex: 1; }
+.archived-r { font-size: 12px; color: var(--ink-mute); font-style: italic; min-width: 200px; }
+
+.prod-summary { padding: 22px 24px; background: var(--tint); border-radius: 4px;
+  margin-bottom: 16px; }
+.prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 14px; }
+.prod-stat-n { font-size: 22px; font-weight: 600; color: var(--ink); }
+.prod-stat-l { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-top: 2px; }
+.prod-link { display: inline-block; margin-top: 18px; font-size: 13px;
+  color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
 
 .links { margin-top: 12px; }
+.links p { margin-bottom: 8px; font-size: 13px; color: var(--ink-soft); }
 .links a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line);
-  padding-bottom: 1px; font-size: 13px; }
+  padding-bottom: 1px; }
 .links a:hover { border-color: var(--ink); }
-
-.divider { height: 1px; background: var(--line); margin: 60px 0; }
 
 @media (max-width: 700px) {
   .wrap { padding: 40px 20px 80px; }
   h1 { font-size: 24px; }
-  .stats { grid-template-columns: repeat(2, 1fr); }
-  .stat { border-bottom: 1px solid var(--line-soft); }
+  .flow { flex-direction: column; }
+  .flow-step { border-right: none; border-bottom: 1px solid var(--line-soft); }
   .piece-body { padding-left: 0; margin-top: 10px; }
+  .archived-row { flex-direction: column; gap: 4px; }
+  .prod-grid { grid-template-columns: 1fr; gap: 14px; }
 }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div class="kicker">Content Bank · Locked 2026-05-12</div>
-<h1>SEA Brand Channel — Production Bank</h1>
-<p class="lede">30 banked pieces. Final state from the SEA brainstorm v1 to v4 iteration. Locked for production on WorldFirst's owned SEA channels (YouTube, FB, IG, TikTok).</p>
+<div class="kicker">Sparkloop · SEA Brand Channel</div>
+<h1>Content Bank</h1>
+<p class="lede">Where picked ideas live between ideation and production. An item enters when it's selected from a brainstorm. It leaves when it moves to a production card.</p>
 
-<div class="meta">
-  <span><strong>Talent anchor</strong> Heng Hui Mei</span>
-  <span><strong>Regions</strong> TH + MY priority</span>
-  <span><strong>Owner</strong> Steven</span>
-  <span><strong>Source</strong> sea-brainstorm v4</span>
-</div>
-
-<div class="stats">
-  <div class="stat"><div class="stat-n">30</div><div class="stat-l">Banked pieces</div></div>
-  <div class="stat"><div class="stat-n">2</div><div class="stat-l">Long-form</div></div>
-  <div class="stat"><div class="stat-n">27</div><div class="stat-l">Short-form</div></div>
-  <div class="stat"><div class="stat-n">1</div><div class="stat-l">KOL angle</div></div>
+<div class="flow">
+  <div class="flow-step">
+    <div class="step-l">Stage 1</div>
+    <div class="step-t">Ideation</div>
+    <div class="step-c">·</div>
+  </div>
+  <div class="flow-step active">
+    <div class="step-l">Stage 2 · here</div>
+    <div class="step-t">Bank (picked)</div>
+    <div class="step-c">2</div>
+  </div>
+  <div class="flow-step">
+    <div class="step-l">Stage 3</div>
+    <div class="step-t">Production</div>
+    <div class="step-c">26</div>
+  </div>
+  <div class="flow-step">
+    <div class="step-l">Archive</div>
+    <div class="step-t">Left out</div>
+    <div class="step-c">3</div>
+  </div>
 </div>
 
 <section>
-<h2>Long-form anchors</h2>
-<div class="section-sub">2 pieces · YouTube anchors · spawn SF micro-cuts</div>
+<div class="section-head">
+  <h2>In the bank now</h2>
+  <span class="section-count">2 picked · awaiting production move</span>
+</div>
+<p class="section-intro">These were picked from the SEA brainstorm but the production workflow needed is different (long-form research, scripting, studio direction). Kept warm here until LF production starts.</p>
 
 <div class="piece">
   <div class="piece-head">
     <div class="piece-id">P1-A1</div>
     <div class="piece-title">Money in and out of China: the operator's full picture</div>
-    <div class="piece-tags"><span class="tag lf">LF 15-20m</span><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span></div>
+    <div class="piece-tags"><span class="tag lf">LF 15-20m</span><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Anchor</span></div>
   </div>
   <div class="piece-body">
-    <div class="piece-mech">Anchor LF education piece. Covers inbound + outbound China money flows. Spawns 6-8 SF micro-cuts.</div>
+    <div class="piece-mech">Education anchor. Inbound + outbound China money flow. Spawns 6-8 SF micro-cuts in post.</div>
     <div class="piece-hook">How money actually enters and leaves China when you're an operator. The full picture, end to end.</div>
+    <div class="piece-note">Selected from SEA brainstorm v4 (2026-05-12). Different workflow + research depth than SF reels — kept in bank for dedicated LF production round.</div>
   </div>
 </div>
 
@@ -151,409 +185,95 @@ td { padding: 10px 8px; border-bottom: 1px solid var(--line-soft); color: var(--
   <div class="piece-body">
     <div class="piece-mech">Step-by-step tutorial. High SEO value. Save-bait. Removes onboarding-friction objection.</div>
     <div class="piece-hook">How to set up your World Account for cross-border payouts. 8 minutes, end-to-end.</div>
+    <div class="piece-note">Selected from SEA brainstorm v4 (2026-05-12). Tutorial production needs product screen-record planning — staged for second LF round.</div>
   </div>
 </div>
 </section>
 
 <section>
-<h2>KOL angle</h2>
-<div class="section-sub">1 piece · External creator · peer-to-peer math</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A6</div>
-    <div class="piece-title">The break-even: when should you switch providers?</div>
-    <div class="piece-tags"><span class="tag kol">KOL</span><span class="tag p2">P2</span><span class="tag">Math-led</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-mech">Decision-tree-by-numbers. Self-qualifies viewer into action. Peer-to-peer math hits harder than brand-led.</div>
-    <div class="piece-hook">At what monthly import volume does staying with your bank cost more than switching? The break-even math.</div>
-  </div>
+<div class="section-head">
+  <h2>In production</h2>
+  <span class="section-count">26 cards · 6 ready · 20 awaiting research</span>
 </div>
-</section>
+<p class="section-intro">No longer in the bank. Live in production cards with research, hook variants, mini-scripts, and ratings.</p>
 
-<div class="divider"></div>
-
-<section>
-<h2>Pillar 1 — Sourcing &amp; Payments</h2>
-<div class="section-sub">15 reels · TOFU + SEO · operator pain mechanics</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A2</div>
-    <div class="piece-title">3 ways CNY actually reaches your supplier</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Curiosity</span></div>
+<div class="prod-summary">
+  <div style="font-size:15px;color:var(--ink-soft);">
+    SEA brand channel batch 1 · short-form + KOL · TH/MY priority
   </div>
-  <div class="piece-body">
-    <div class="piece-hook">There are 3 ways your CNY reaches a Chinese supplier. Only one is same-day. Here's how to tell which way your bank is using.</div>
+  <div class="prod-grid">
+    <div>
+      <div class="prod-stat-n">7</div>
+      <div class="prod-stat-l">Research topics</div>
+    </div>
+    <div>
+      <div class="prod-stat-n">26</div>
+      <div class="prod-stat-l">SF + KOL cards</div>
+    </div>
+    <div>
+      <div class="prod-stat-n">30</div>
+      <div class="prod-stat-l">Mini-script angles</div>
+    </div>
   </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A4</div>
-    <div class="piece-title">Your supplier asked you to pay the $200 they didn't receive</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Pain-first</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your supplier received $200 less than you sent. They're asking you to pay the difference. Now you've paid the bank fee twice.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A5</div>
-    <div class="piece-title">SWIFT vs the alternatives: which actually pays your supplier faster</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Comparison</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">SWIFT is the bank's default for international payments. Here's how it works, then here's what beats it.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A6</div>
-    <div class="piece-title">Why paying your supplier in CNY actually wins</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Reframe</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Paying in USD feels safer. Paying in CNY costs you less and lands faster. Here's the math behind why.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A7</div>
-    <div class="piece-title">Two banks offer 'CNY transfer'. Only one moves CNY.</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Curiosity</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Two banks both say 'CNY transfer available'. Only one actually sends CNY. Your supplier knows the difference.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A8</div>
-    <div class="piece-title">The 3-letter code that decides if your wire is same-day</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Curiosity</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">There's a 3-letter code on your wire that decides if it clears same-day or in 5 business days.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A9</div>
-    <div class="piece-title">Supplier said wire didn't arrive. Bank says it did.</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Curiosity</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your supplier says the wire didn't arrive. Your bank's confirmation says it did. Both can be true. Here's why.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A10</div>
-    <div class="piece-title">The routing decision that quietly changes your fee 1%</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Curiosity</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your bank makes one decision on every China wire that changes your fee by up to 1%. They don't tell you.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A11</div>
-    <div class="piece-title">Why your CNY payment sometimes arrives in USD</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Curiosity</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">You sent CNY. Your supplier received USD. The bank quietly converted at their rate. This is how.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A12</div>
-    <div class="piece-title">$1,200 gone from a $50K supplier wire. Where.</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Hidden cost</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">You sent $50,000. Your supplier received $48,800. The $1,200 wasn't on the wire confirmation. Here's where it went.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A13</div>
-    <div class="piece-title">Bank says no fee. You still paid $300.</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Hidden cost</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your bank confirmed 'no transfer fee'. Your statement shows $300 less than expected. Where did $300 go?</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A14</div>
-    <div class="piece-title">Three operators, same $50K wire, three supplier-end amounts</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag">Hidden cost</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Same supplier, same $50K send, three providers. Supplier received $48,800, $49,100, and $49,650. Why.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A15</div>
-    <div class="piece-title">What 'no fee' costs you per $10K to China</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag bi">EN + ZH</span><span class="tag">Hidden cost</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">'No transfer fee' on a $10K wire to China typically costs $80-$120 in FX margin. How to spot it.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P1-A16</div>
-    <div class="piece-title">Receipt says $50K. Statement says $51.2K.</div>
-    <div class="piece-tags"><span class="tag p1">P1</span><span class="tag">Hidden cost</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your wire receipt says you sent $50,000. Your account statement says $51,200 left. The $1,200 isn't a fee. It's how banks book FX.</div>
-  </div>
+  <a class="prod-link" href="https://socialworldfirst.github.io/sea-production/">Open production cards →</a>
 </div>
 </section>
 
 <section>
-<h2>Pillar 2 — Save &amp; Scale</h2>
-<div class="section-sub">10 reels · MOFU · math + comparison</div>
+<div class="section-head">
+  <h2>Source ideation sessions</h2>
+  <span class="section-count">1 session · more coming</span>
+</div>
+<p class="section-intro">Every banked item points back to the brainstorm it was picked from. Future Sparkloop sessions get archived here.</p>
 
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A1</div>
-    <div class="piece-title">How a 2% bank-to-rail gap compounds over a year</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Math-led</span></div>
+<a class="session-card" href="https://socialworldfirst.github.io/sea-brainstorm/" target="_blank">
+  <div class="session-meta">
+    <span class="session-date">2026-05-12</span>
+    <span class="session-title">SEA Brand Channel · brainstorm v1 to v4</span>
+    <span class="session-state">Frozen</span>
   </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your local bank vs a dedicated cross-border rail: 2% gap per transaction. Run it 12 times. The math gets serious.</div>
-  </div>
+  <div class="session-sum">35 angles iterated across four passes. 30 picked into bank, 5 left out. Driver: SEA brand channel batch 1 production. Talent anchor: Heng Hui Mei.</div>
+</a>
+</section>
+
+<section>
+<div class="section-head">
+  <h2>Archived this batch</h2>
+  <span class="section-count">3 categories · deliberate skip</span>
+</div>
+<p class="section-intro">Considered, then left out for stated reasons. Reachable for a future batch.</p>
+
+<div class="archived-row">
+  <div class="archived-id">P4 pillar</div>
+  <div class="archived-t">Brand · manifesto, scale-led, behind-the-scenes</div>
+  <div class="archived-r">Save for when WF founder voice can anchor</div>
 </div>
 
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A3</div>
-    <div class="piece-title">Bank wire vs WorldFirst on the same $50K payment</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Comparison</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Bank wire vs WorldFirst on the same $50K supplier payment. Apples to apples.</div>
-  </div>
+<div class="archived-row">
+  <div class="archived-id">Bahasa Malay</div>
+  <div class="archived-t">MY regional language content</div>
+  <div class="archived-r">Needs Web TV Asia or local agency · separate hire</div>
 </div>
 
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A7</div>
-    <div class="piece-title">Your sourcing budget shrinks 4% a year (silent compound)</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Math-led</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">If you import $500K a year on a 0.4% FX margin, you're losing $2,000 silently. Per year.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A8</div>
-    <div class="piece-title">How to read FX margin off your wire confirmation</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag bi">EN + ZH</span><span class="tag">Tutorial</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your bank's FX margin is hidden in plain sight on every wire confirmation. The formula to find it.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A9</div>
-    <div class="piece-title">Good rate quoted vs real interbank rate</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag bi">EN + ZH</span><span class="tag">Math-led</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Your bank quoted you a 'competitive rate'. The real rate was 1.4% better. How to verify in under a minute.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A12</div>
-    <div class="piece-title">Personal cross-border tools weren't built for business</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Category</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Cross-border money apps were built for travellers and freelancers. Once you're paying suppliers weekly, the design gaps show.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A13</div>
-    <div class="piece-title">How much PayPal actually costs you on a $20K supplier payment</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Cost decomp</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">PayPal's 'flat fee' on a $20K supplier payment is closer to 5% once you add cross-border and FX. The full receipt.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A14</div>
-    <div class="piece-title">Credit cards for international supplier payments: the gap</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Category gap</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Why your credit card mostly doesn't work for paying Chinese suppliers. And when it does, why you wish it didn't.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A18</div>
-    <div class="piece-title">Personal vs business FX rate: the spread</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Category</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Personal cross-border tools quote retail rates. Business tools quote near-interbank. The spread can be 1.5%.</div>
-  </div>
-</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P2-A24</div>
-    <div class="piece-title">When CAN you pay a Chinese supplier by card?</div>
-    <div class="piece-tags"><span class="tag p2">P2</span><span class="tag">Category gap</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">There are 4 scenarios where a credit card actually works for paying a Chinese supplier. Three of them aren't worth it.</div>
-  </div>
+<div class="archived-row">
+  <div class="archived-id">Thai + Viet</div>
+  <div class="archived-t">TH and VN regional language content</div>
+  <div class="archived-r">Same · localised hire stream needed</div>
 </div>
 </section>
 
 <section>
-<h2>Pillar 3 — Solution &amp; Product</h2>
-<div class="section-sub">2 reels · BOFU · product proof</div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P3-A2-cut</div>
-    <div class="piece-title">World Account setup tease (cut from LF tutorial)</div>
-    <div class="piece-tags"><span class="tag p3">P3</span><span class="tag">Tutorial cut</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-mech">60s 'set this up in under 10 minutes' tease cut from the P3-A2 LF tutorial.</div>
-  </div>
+<div class="section-head">
+  <h2>Linked surfaces</h2>
+  <span class="section-count">Sparkloop architecture</span>
 </div>
-
-<div class="piece">
-  <div class="piece-head">
-    <div class="piece-id">P3-A10</div>
-    <div class="piece-title">Why SMEs are building a financial stack</div>
-    <div class="piece-tags"><span class="tag p3">P3</span><span class="tag">Category</span></div>
-  </div>
-  <div class="piece-body">
-    <div class="piece-hook">Modern SMEs don't have one bank. They have a financial stack. Here's what's in it.</div>
-  </div>
-</div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-<h2>Distribution mapping</h2>
-<div class="section-sub">Per-format channel routing</div>
-<table>
-  <thead><tr><th>Format</th><th>Primary</th><th>Secondary</th></tr></thead>
-  <tbody>
-    <tr><td>LF 15-20m</td><td>YouTube @WorldFirst (anchor)</td><td>FB native 90s cut, IG carousel</td></tr>
-    <tr><td>LF 7-10m</td><td>YouTube</td><td>FB long native</td></tr>
-    <tr><td>SF reel</td><td>TikTok @worldfirstsea, IG @worldfirst, YT Shorts, FB Reels</td><td>LinkedIn (MY only, post-July 2026)</td></tr>
-    <tr><td>KOL</td><td>KOL's native channel + brand co-post</td><td>TBD per KOL</td></tr>
-  </tbody>
-</table>
-</section>
-
-<section>
-<h2>Production approach</h2>
-<div class="section-sub">Recommended batching</div>
-<div class="notes">
-<h3>Studio days</h3>
-<ul>
-  <li><strong>Day 1 (4-5h):</strong> P1-A1 LF anchor in EN + ZH. Extract 6-8 SF micro-cuts in post.</li>
-  <li><strong>Day 2 (4-5h):</strong> P3-A2 LF tutorial + 5 standalone SF reels (P1-A2, A4, A5, A6, P2-A1).</li>
-  <li><strong>Day 3 (3-4h):</strong> Remaining 10 SF reels in batched runs.</li>
-  <li><strong>Post:</strong> Cut + caption + bilingual layering. ~2 weeks for the whole batch.</li>
-</ul>
-</div>
-<div class="notes">
-<h3>Talent split</h3>
-<ul>
-  <li>Hui Mei: all P1 + most P2 (her strong lane). EN + ZH same shoot.</li>
-  <li>Hui Mei or alternative: P3 tutorials.</li>
-  <li>External KOL: P2-A6 only.</li>
-</ul>
-</div>
-</section>
-
-<section>
-<h2>Bilingual production</h2>
-<div class="section-sub">EN + Mandarin · same shoot, different takes</div>
-<div class="notes">
-<h3>Bilingual flagged</h3>
-<ul>
-  <li>P1-A1 anchor (essential)</li>
-  <li>P1-A2, A4, A5, A6 (P1 core SF)</li>
-  <li>P1-A7 through A16 (P1 derivatives)</li>
-  <li>P2-A8, A9, A18 (cost transparency, cross-language)</li>
-</ul>
-</div>
-<div class="notes">
-<h3>EN only</h3>
-<ul>
-  <li>P2-A1, A3, A7, A12, A13, A14, A24, P3-A10</li>
-  <li>P2-A6 (KOL)</li>
-</ul>
-</div>
-</section>
-
-<section>
-<h2>Out of scope (this batch)</h2>
-<div class="notes">
-<ul>
-  <li>P4 (Brand) — manifesto / scale-led / behind-the-scenes. Save for when WF founder voice can anchor.</li>
-  <li>Bahasa Malay regional content — needs Web TV Asia or local agency.</li>
-  <li>Thai regional content — same.</li>
-  <li>Vietnamese regional content — same.</li>
-</ul>
-</div>
-</section>
-
-<section>
-<h2>Linked surfaces</h2>
 <div class="links">
-  <p>Production cards (with research) → <a href="https://socialworldfirst.github.io/sea-production/">sea-production</a></p>
-  <p>Brainstorm v4 frozen → <a href="https://socialworldfirst.github.io/sea-brainstorm/">sea-brainstorm</a></p>
-  <p>Research topic index → <a href="https://socialworldfirst.github.io/sea-research-index/">sea-research-index</a></p>
+  <p>Production cards (with research + ratings) → <a href="https://socialworldfirst.github.io/sea-production/">sea-production</a></p>
+  <p>Source brainstorm v4 (frozen) → <a href="https://socialworldfirst.github.io/sea-brainstorm/">sea-brainstorm</a></p>
+  <p>Research topic index (7 topics, 1 done) → <a href="https://socialworldfirst.github.io/sea-research-index/">sea-research-index</a></p>
   <p>Topic 1 brief (CNY rails) → <a href="https://socialworldfirst.github.io/sea-listen-cny-rails/">sea-listen-cny-rails</a></p>
   <p>Sparkloop explainer → <a href="https://socialworldfirst.github.io/sparkloop/">sparkloop</a></p>
+  <p>/spark_scan radar mockup → <a href="https://socialworldfirst.github.io/spark-scan-site/">spark-scan-site</a></p>
 </div>
 </section>
 
